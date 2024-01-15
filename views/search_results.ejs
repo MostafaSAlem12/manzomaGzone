@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>رقم البند</th>
+          <th>التاريخ</th>
+          <th>سعت</th>
+          <th>ذكر عسكري</th>
+          <th>اثنى عسكري</th>
+          <th>ذكر مدني</th>
+          <th>انثى مدني</th>
+          <th>نوع المعده</th>
+          <th>الكمية</th>
+          <th>المكان</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const record of records) { %>
+        <tr>
+          <td><%= record.id %></td>
+          <td><%= record.date.toISOString().split('T')[0] %></td>
+          <td><%= record.time %></td>
+          <td><%= record.military_male %></td>
+          <td><%= record.military_female %></td>
+          <td><%= record.civilian_male %></td>
+          <td><%= record.civilian_female %></td>
+          <td><%= record.vehicle_type %></td>
+          <td><%= record.vehicle_qty %></td>
+          <td><%= record.place %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

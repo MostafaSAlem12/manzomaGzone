@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="search" method="POST">
+      <h1>بحث متقدم</h1>
+      <label for="id">رقم البند</label>
+      <input type="text" name="id" id="id" />
+      <br />
+      <label for="date">التاريخ</label>
+      <br />
+      <label for="date_beg">من</label>
+      <input type="date" name="date_beg" id="date_beg" />
+      <label for="date_end">إلي</label>
+      <input type="date" name="date_end" id="date_end" />
+      <br />
+      <label for="time">السعة</label>
+      <br />
+      <label for="time_beg">من</label>
+      <input type="Number" name="time_beg" id="time_beg" min="0" />
+      <label for="time_end">إلي</label>
+      <input type="Number" name="time_end" id="time_end" min="0" />
+      <br />
+      <label for="vehicle">نوع المعده</label>
+      <!-- <input type="text" name="vehicle" id="vehicle" /> -->
+      <select name="vehicle" id="vehicle">
+        <option value="">...اختر</option>
+        <option value="مركبة">مركبة</option>
+        <option value="لنش">لنش</option>
+        <option value="طيارة">طيارة</option>
+      </select>
+      <br />
+      <button type="submit">يحث</button>
+    </form>
+    <hr />
+    <table>
+      <thead>
+        <tr>
+          <th>رقم البند</th>
+          <th>التاريخ</th>
+          <th>سعت</th>
+          <th>ذكر عسكري</th>
+          <th>اثنى عسكري</th>
+          <th>ذكر مدني</th>
+          <th>انثى مدني</th>
+          <th>نوع المعده</th>
+          <th>الكمية</th>
+          <th>المكان</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const record of records) { %>
+        <tr>
+          <td><%= record.id %></td>
+          <td><%= record.date.toISOString().split('T')[0] %></td>
+          <td><%= record.time %></td>
+          <td><%= record.military_male %></td>
+          <td><%= record.military_female %></td>
+          <td><%= record.civilian_male %></td>
+          <td><%= record.civilian_female %></td>
+          <td><%= record.vehicle_type %></td>
+          <td><%= record.vehicle_qty %></td>
+          <td><%= record.place %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

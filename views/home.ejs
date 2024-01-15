@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <form action="add" method="POST">
+      <label for="id">رقم البند</label>
+      <input type="text" name="id" id="id" />
+      <br />
+      <label for="date">التاريخ</label>
+      <input type="date" name="date" id="date" />
+      <br />
+      <label for="time">سعت</label>
+      <input type="number" name="time" id="time" min="0" />
+      <br />
+
+      <!-- افــــــــــراد -->
+      <label for="person">اختر الفرد:</label>
+      <select name="person" id="person">
+        <option value="" name="null">اختر...</option>
+        <option value="ذكر عسكري" name="mm">ذكر عسكري</option>
+        <option value="انثي عسكري" name="mf">انثي عسكري</option>
+        <option value="ذكر مدني" name="cm">ذكر مدني</option>
+        <option value="انثي مدني" name="cf">انثي مدني</option>
+      </select>
+      <div id="personField"></div>
+      <br />
+
+      <!-- معــــــــــــــــدات -->
+      <label for="vehicle">اختر المعده:</label>
+      <select name="vehicle" id="vehicle">
+        <option value="">اختر...</option>
+        <option value="مركبات" name="markaba">مركبات</option>
+        <option value="طائرات" name="plane">طائرات</option>
+        <option value="لنشات" name="lansh">لنشات</option>
+      </select>
+      <div id="vehicleField"></div>
+      <br />
+      <label for="place">المكان</label>
+      <input type="text" name="place" id="place" />
+      <br />
+      <button type="submit">سجل</button>
+    </form>
+  </body>
+  <script src="/js/script.js"></script>
+</html>
