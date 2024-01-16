@@ -70,10 +70,12 @@ const add = (req, res) => {
 
 const show = async (req, res) => {
   const records = await Record.find();
-  res.render("show", { records });
+  const username = req.session.username;
+  res.render("show", { records, username });
 };
 
 const search = async (req, res) => {
+  const username = req.session.username;
   const id = req.body.id;
   const power = req.body.power;
   const date_beg = req.body.date_beg;
@@ -107,7 +109,7 @@ const search = async (req, res) => {
   const results = await Record.find(query)
     .then((records) => {
       console.log(records);
-      res.render("show", { records });
+      res.render("show", { records, username });
     })
     .catch((err) => console.error(err));
 };

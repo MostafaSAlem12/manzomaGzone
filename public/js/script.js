@@ -12,7 +12,7 @@ person.addEventListener("change", () => {
     const fieldName = person.options[person.selectedIndex].getAttribute("name");
     document.getElementById(
       "personField"
-    ).innerHTML += `<label>${person.value}</label> <input type="text" name="${fieldName}"/><br>`;
+    ).innerHTML += `<label for="${fieldName}" >${person.value}</label> <input type="text" class="form-control" name="${fieldName}"/><br>`;
   }
 });
 vehicle.addEventListener("change", () => {
@@ -21,6 +21,6 @@ vehicle.addEventListener("change", () => {
       vehicle.options[vehicle.selectedIndex].getAttribute("name");
     document.getElementById(
       "vehicleField"
-    ).innerHTML = `<label>${vehicle.value}</label> <input type="text" name="${fieldName}"/><br>`;
+    ).innerHTML = `<label for="${fieldName}">${vehicle.value}</label> <input type="text" class="form-control" name="${fieldName}"/><br>`;
   }
 });

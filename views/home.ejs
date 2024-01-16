@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,52 +10,59 @@
   </head>
   <body>
     <%-include("navbar.ejs")%>
-    <h1>Hello <%= username%></h1>
-    <form action="add" method="POST">
-      <label for="id">رقم البند</label>
-      <input type="text" name="id" id="id" />
-      <br />
-      <label for="power">القوات</label>
-      <input type="text" name="power" id="power" />
-      <br />
-      <label for="date">التاريخ</label>
-      <input type="date" name="date" id="date" />
-      <br />
-      <label for="time">سعت</label>
-      <input type="number" name="time" id="time" min="0" />
-      <br />
+      <body class="bg-light">
+<center>
+    <form action="add" method="POST" class="mt-5 justify-content-center"> 
+        <div class="w-75">
+            <div class="p-4 m-5 card">
+    <h1 class="text-center mb-4">تسجيل بيان</h1>
 
-      <!-- افــــــــــراد -->
-      <label for="person">اختر الفرد:</label>
-      <select name="person" id="person">
-        <option value="" name="null">اختر...</option>
-        <option value="ذكر عسكري" name="mm">ذكر عسكري</option>
-        <option value="انثي عسكري" name="mf">انثي عسكري</option>
-        <option value="ذكر مدني" name="cm">ذكر مدني</option>
-        <option value="انثي مدني" name="cf">انثي مدني</option>
-      </select>
-      <div id="personField"></div>
-      <br />
-
-      <!-- معــــــــــــــــدات -->
-      <label for="vehicle">اختر المعده:</label>
-      <select name="vehicle" id="vehicle">
-        <option value="">اختر...</option>
-        <option value="مركبات" name="markaba">مركبات</option>
-        <option value="طائرات" name="plane">طائرات</option>
-        <option value="لنشات" name="lansh">لنشات</option>
-      </select>
-      <div id="vehicleField"></div>
-
-      <br />
-      <label for="place">المكان</label>
-      <input type="text" name="place" id="place" />
-      <br />
-      <button type="submit">سجل</button>
+      <div class="form-group form-floating m-3">
+        <label for="id" >رقم البند</label>
+        <input type="text" name="id" id="id" class="form-control" required">
+      </div>
+      <div class="form-group form-floating m-3">
+        <label for="power">القوات</label>
+        <input type="text" name="power" id="power" class="form-control" required>
+      </div>
+      <div class="form-group form-floating m-3">
+        <label for="date">التاريخ</label>
+        <input type="date" name="date" id="date" class="form-control" required>
+      </div>
+      <div class="form-group form-floating m-3">
+        <label for="time">سعت</label>
+        <input type="number" name="time" id="time" min="0" class="form-control" required>
+      </div>
+      <div class="form-group form-floating m-3">
+        <label for="person">اختر الفرد:</label>
+        <select name="person" id="person" class="form-select">
+          <option value="" name="null">اختر...</option>
+          <option value="ذكر عسكري" name="mm">ذكر عسكري</option>
+          <option value="انثي عسكري" name="mf">انثي عسكري</option>
+          <option value="ذكر مدني" name="cm">ذكر مدني</option>
+          <option value="انثي مدني" name="cf">انثي مدني</option>
+        </select>
+      </div>
+      <div class="form-group m-3" id="personField"></div>
+      <div class="form-group form-floating m-3">
+        <label for="vehicle">اختر المعدة:</label>
+        <select name="vehicle" id="vehicle" class="form-select" required>
+          <option value="">اختر...</option>
+          <option value="مركبات" name="markaba">مركبات</option>
+          <option value="طائرات" name="plane">طائرات</option>
+          <option value="لنشات" name="lansh">لنشات</option>
+        </select>
+      </div>
+      <div class="form-group form-floating m-3" id="vehicleField"></div>
+      <div class="form-group form-floating m-3">
+        <label for="place">المكان</label>
+        <input type="text" name="place" id="place" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary justify-content-center" style="width:30%;">سجل</button>
     </form>
-    <form action="logout" method="POST">
-      <button type="submit">تسجيل الخروج</button>
-    </form>
+  </div>
+</div>
+</center>
   </body>
   <script src="/js/script.js"></script>
 </html>

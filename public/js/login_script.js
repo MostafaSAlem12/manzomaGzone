@@ -9,3 +9,7 @@ togglePassword.addEventListener("change", () => {
     passwordField.setAttribute("type", "password");
   }
 });
+
+togglePassword.addEventListener("change", () => {
+  console.log("hello, world");
+});
