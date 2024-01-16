@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap-icons-1.10.3/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/style/style.css" />
     <title>Document</title>
-    <style>
+    <!-- <style>
       table {
         width: 100%;
         border-collapse: collapse;
@@ -19,13 +22,18 @@
       th {
         background-color: #f2f2f2;
       }
-    </style>
+    </style> -->
   </head>
   <body>
+    <%-include("navbar.ejs")%>
     <form action="search" method="POST">
       <h1>بحث متقدم</h1>
-      <label for="id">رقم البند</label>
-      <input type="text" name="id" id="id" />
+      <div class="form-group">
+        <label for="id">رقم البند</label>
+        <input type="text" name="id" id="id" class="form-control" />
+      </div>
+      <label for="power">القوات</label>
+      <input type="text" name="power" id="id" />
       <br />
       <label for="date">التاريخ</label>
       <br />
@@ -53,25 +61,27 @@
       <button type="submit">يحث</button>
     </form>
     <hr />
-    <table>
+    <table class="table table-hover">
       <thead>
-        <tr>
-          <th>رقم البند</th>
-          <th>التاريخ</th>
-          <th>سعت</th>
-          <th>ذكر عسكري</th>
-          <th>اثنى عسكري</th>
-          <th>ذكر مدني</th>
-          <th>انثى مدني</th>
-          <th>نوع المعده</th>
-          <th>الكمية</th>
-          <th>المكان</th>
+        <tr class="text-center">
+          <th scope="col">رقم البند</th>
+          <th scope="col">القوات</th>
+          <th scope="col">التاريخ</th>
+          <th scope="col">سعت</th>
+          <th scope="col">ذكر عسكري</th>
+          <th scope="col">اثنى عسكري</th>
+          <th scope="col">ذكر مدني</th>
+          <th scope="col">انثى مدني</th>
+          <th scope="col">نوع المعده</th>
+          <th scope="col">العدد</th>
+          <th scope="col">المنطقة</th>
         </tr>
       </thead>
       <tbody>
         <% for (const record of records) { %>
-        <tr>
-          <td><%= record.id %></td>
+        <tr class="text-center">
+          <td scope="row"><%= record.id %></td>
+          <td><%= record.power%></td>
           <td><%= record.date.toISOString().split('T')[0] %></td>
           <td><%= record.time %></td>
           <td><%= record.military_male %></td>

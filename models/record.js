@@ -6,6 +6,9 @@ const schema = new Schema(
     id: {
       type: String,
     },
+    power: {
+      type: String,
+    },
     date: {
       type: Date,
     },

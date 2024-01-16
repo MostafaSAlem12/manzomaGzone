@@ -3,13 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap-icons-1.10.3/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/style/style.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1>Hello</h1>
+    <%-include("navbar.ejs")%>
+    <h1>Hello <%= username%></h1>
     <form action="add" method="POST">
       <label for="id">رقم البند</label>
       <input type="text" name="id" id="id" />
+      <br />
+      <label for="power">القوات</label>
+      <input type="text" name="power" id="power" />
       <br />
       <label for="date">التاريخ</label>
       <input type="date" name="date" id="date" />
@@ -39,11 +46,15 @@
         <option value="لنشات" name="lansh">لنشات</option>
       </select>
       <div id="vehicleField"></div>
+
       <br />
       <label for="place">المكان</label>
       <input type="text" name="place" id="place" />
       <br />
       <button type="submit">سجل</button>
+    </form>
+    <form action="logout" method="POST">
+      <button type="submit">تسجيل الخروج</button>
     </form>
   </body>
   <script src="/js/script.js"></script>

@@ -3,11 +3,12 @@ const Record = require("../models/record");
 const plotly = require("plotly")();
 
 const record = (req, res) => {
-  res.render("home");
+  res.render("home", { username: req.session.username });
 };
 
 const add = (req, res) => {
   const id = req.body.id;
+  const power = req.body.power;
   const date = req.body.date;
   const time = req.body.time;
   let mm, mf, cf, cm, vehicle_type, vehicle_qty;
@@ -46,6 +47,7 @@ const add = (req, res) => {
   const place = req.body.place;
   const record = new Record({
     id: id,
+    power: power,
     date: date,
     time: time,
     military_male: mm,
@@ -73,6 +75,7 @@ const show = async (req, res) => {
 
 const search = async (req, res) => {
   const id = req.body.id;
+  const power = req.body.power;
   const date_beg = req.body.date_beg;
   const date_end = req.body.date_end;
   const time_beg = req.body.time_beg;
@@ -81,6 +84,9 @@ const search = async (req, res) => {
   const query = {};
   if (id) {
     query.id = id;
+  }
+  if (power) {
+    query.power = power;
   }
   if (date_beg && date_end) {
     query.date = {
@@ -106,29 +112,52 @@ const search = async (req, res) => {
     .catch((err) => console.error(err));
 };
 
-// const dashboard = async (req, res) => {
-//   try {
-//     const result = await Record.aggregate([
-//       {
-//         $group: {
-//           _id: "$vehicle_type",
-//           totalQty: { $sum: "$vehicle_qty" },
-//         },
-//       },
-//     ]);
+const dashboard = async (req, res) => {
+  try {
+    const result = await Record.aggregate([
+      {
+        $group: {
+          _id: "$vehicle_type",
+          totalQty: { $sum: "$vehicle_qty" },
+        },
+      },
+    ]);
 
-//     console.log(result);
+    const mc_result = await Record.aggregate([
+      {
+        $group: {
+          _id: null,
+          TotalMilitaryMale: { $sum: "$military_male" },
+          TotalMilitaryFemale: { $sum: "$military_female" },
+          TotalCivilianMale: { $sum: "$civilian_male" },
+          TotalCivilianFemale: { $sum: "$civilian_female" },
+        },
+      },
+    ]);
 
-//     // You can render a view or send the result as JSON to the client
-//     res.json(result);
-//   } catch (error) {
-//     console.error(error);
-//     // Handle the error appropriately, e.g., send an error response
-//     res.status(500).send("Error retrieving dashboard data");
-//   }
-// };
+    const military_civilian = {
+      military:
+        mc_result[0].TotalMilitaryMale + mc_result[0].TotalMilitaryFemale,
+      civilian:
+        mc_result[0].TotalCivilianMale + mc_result[0].TotalCivilianFemale,
+    };
 
-const dashboard = (req, res) => {
-  res.render("dashboard");
+    const uniqueIds = await Record.distinct("id");
+    const uniqueId = uniqueIds.length;
+
+    console.log(uniqueId);
+    res.render("dashboard", {
+      data: JSON.stringify(result),
+      military_civilian: JSON.stringify(military_civilian),
+      uniqueId,
+    });
+
+    // You can render a view or send the result as JSON to the client
+  } catch (error) {
+    console.error(error);
+    // Handle the error appropriately, e.g., send an error response
+    res.status(500).send("Error retrieving dashboard data");
+  }
 };
+
 module.exports = { record, add, show, search, dashboard };

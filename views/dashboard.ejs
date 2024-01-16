@@ -6,8 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="visualization"></div>
+    <div id="bar-chart"></div>
+    <div id="pie-chart"></div>
+    <h1>عدد البيانات: <%= uniqueId%></h1>
   </body>
+  <script></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="/js/dashboard"></script>
+  <script
+    src="/js/dashboard.js"
+    data-data="<%= data %>"
+    military-civilian-data="<%= military_civilian%>"
+  ></script>
 </html>

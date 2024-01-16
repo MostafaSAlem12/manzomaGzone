@@ -21,6 +21,6 @@ vehicle.addEventListener("change", () => {
       vehicle.options[vehicle.selectedIndex].getAttribute("name");
     document.getElementById(
       "vehicleField"
-    ).innerHTML += `<label>${vehicle.value}</label> <input type="text" name="${fieldName}"/><br>`;
+    ).innerHTML = `<label>${vehicle.value}</label> <input type="text" name="${fieldName}"/><br>`;
   }
 });
