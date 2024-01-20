@@ -10,6 +10,7 @@ const {
   add,
   show,
   search,
+  specialSearch,
   dashboard,
 } = require("./controllers/record_controller");
 
@@ -20,6 +21,8 @@ const {
   login,
   logout,
 } = require("./controllers/login_controller");
+
+const charts_page = require("./controllers/charts_controller");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -35,7 +38,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 365 * 24 * 60 * 60 * 1000, // Set to a high value or Infinity (milliseconds)
+      maxAge: Infinity, // Set to a high value or Infinity (milliseconds)
     },
   })
 );
@@ -53,9 +56,11 @@ app.get("/show", Auth, show);
 app.get("/dashboard", Auth, dashboard);
 app.get("/login", Auth, login_page);
 app.get("/register", Auth, register_page);
+app.get("/charts", charts_page);
 
 app.post("/add", add);
 app.post("/search", search);
+app.post("/specialSearch", specialSearch);
 app.post("/register", register);
 app.post("/login", login);
 app.post("/logout", logout);

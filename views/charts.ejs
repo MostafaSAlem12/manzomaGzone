@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <script src="/js/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap-icons-1.10.3/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/style/style.css" />
+
+    <style>
+      .container {
+        width: 250px;
+        height: 200px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .bar {
+        background-color: #720570;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <%-include("navbar.ejs")%>
+
+<center>
+    <div class="display-3 mt-4">التحليل البياني</div>
+</center>
+  <div class="container-fluid">
+    <div class="row justify-content-between m-5">
+      <div
+        class="col-4 border border-4 shadow"
+        style="width: 550px; height: 450px"
+      >
+        <div class="container-fluid">
+          <div class="row" style="height: 350px; width: 550px">
+            <div id="r1c1"></div>
+          </div>
+          <div class="row border-top border-2" style="height: 75px">
+            <div class="display-h6 mt-1">
+              يوجد عدد (3) لنش, عدد (8) ماركبة, عدد (7) طائرة
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-4 border border-4 shadow"
+        style="width: 550px; height: 450px"
+      >
+        <div class="container-fluid">
+          <div class="row" style="height: 350px; width: 550px">
+            <div id="r1c2"></div>
+          </div>
+          <div class="row border-top border-2" style="height: 75px">
+            <div class="display-h6 mt-1">
+              يوجد عدد (3) لنش, عدد (8) ماركبة, عدد (7) طائرة
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-4 border border-4 shadow"
+        style="width: 550px; height: 450px"
+      >
+        <div class="container-fluid">
+          <div class="row" style="height: 350px; width: 550px">
+            <div id="r1c3"></div>
+          </div>
+          <div class="row border-top border-2" style="height: 75px">
+            <div class="display-h6 mt-1">
+              يوجد عدد (3) لنش, عدد (8) ماركبة, عدد (7) طائرة
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-between m-5">
+      <div
+        class="col-4 border border-4 shadow"
+        style="width: 400px; height: 400px"
+      >
+        r2c1
+      </div>
+      <div class="col-4 border border-4">r2c2</div>
+      <div class="col-4 border border-4">r2c3</div>
+    </div>
+  </div>
+  <script src="/js/charts_script.js"></script>
+</html>

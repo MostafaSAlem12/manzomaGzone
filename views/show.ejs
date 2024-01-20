@@ -6,120 +6,315 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/bootstrap-icons-1.10.3/bootstrap-icons.css" />
     <link rel="stylesheet" href="/style/style.css" />
+      <style>
+body {
+  font-family: "Times New Roman", Times, serif;
+  
+}
+
+
+  </style>
     <title>Document</title>
   </head>
-  <body>
+  <body class="bg-light">
+
     <%-include("navbar.ejs")%>
-    <button id="myBtn" class="btn btn-primary">بحث متقدم</button>
+        <center>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <form action="search" method="POST">
-          <h3 class="text-primary m-3">بحث متقدم</h3>
+    <div class="m-2">
+      <button id="myBtn" class="btn btn-outline-dark">بحث متقدم</button>
+      <button id="myBtn1" class="btn btn-outline-dark">بحث متخصص</button>
+      </div>
 
-          <div class="form-group m-3 col-4">
-            <div style="display: flex; gap: 10px">
-              <label for="id">رقم البند</label>
-              <input type="text" name="id" id="id" class="form-control" />
-
-              <label for="power">القوات</label>
-              <input type="text" name="power" id="id" class="form-control" />
-            </div>
-          </div>
-
-          <div class="form-group m-3 col-2">
+<div id="myModal1" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <!-- Your specialized search content goes here -->
+        <form action="/specialSearch" method="POST">
+      <div class="container-fluid">
+        <div class="row m-3 justify-content-center">
+          <div class="col-4">
             <label for="date">التاريخ</label>
-            <br />
-            <div style="display: flex; gap: 10px">
-              <label for="date_beg">من</label>
-              <input
-                type="date"
-                name="date_beg"
-                id="date_beg"
-                class="form-control"
-              />
-              <label for="date_end">إلي</label>
-              <input
-                type="date"
-                name="date_end"
-                id="date_end"
-                class="form-control"
-              />
-            </div>
           </div>
-          <div class="form-group m-3 col-2">
-            <label for="time">السعة</label>
-            <br />
-            <label for="time_beg">من</label>
+          <div class="col-4">
+            <label for="date_beg">من</label>
             <input
-              type="Number"
+              type="date"
+              name="date_beg"
+              id="date_beg"
+              class="form-control"
+            />
+          </div>
+          <div class="col-4">
+            <label for="date_end">إلي</label>
+            <input
+              type="date"
+              name="date_end"
+              id="date_end"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="row m-3 justify-content-center">
+          <div class="col-4">
+            <label for="date">السعة</label>
+          </div>
+          <div class="col-4">
+            <label for="date_beg">من</label>
+            <input
+              type="text"
               name="time_beg"
               id="time_beg"
-              min="0"
               class="form-control"
             />
+          </div>
+          <div class="col-4">
             <label for="time_end">إلي</label>
             <input
-              type="Number"
+              type="text"
               name="time_end"
               id="time_end"
-              min="0"
               class="form-control"
             />
           </div>
-
-          <div class="form-group m-3 col-2">
-            <label for="vehicle">نوع المعده</label>
-            <!-- <input type="text" name="vehicle" id="vehicle" /> -->
-            <select name="vehicle" id="vehicle" class="form-select">
-              <option value="">...اختر</option>
-              <option value="مركبة">مركبة</option>
-              <option value="لنش">لنش</option>
-              <option value="طيارة">طيارة</option>
-            </select>
+        </div>
+        <div class="row m-3 justify-content-center">
+          <div class="col-4">
+            <button class="btn btn-dark" type="submit">بحث</button>
           </div>
-          <button type="submit" class="btn btn-primary m-3 col-2">بحث</button>
-        </form>
+        </div>
+      </div>
+    </form>
+    
+  </div>
+</div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- advanced search -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+          <form action="search" method="POST">
+            <div class="container-fluid">
+              <div class="row m-3 justify-content-center">
+                <div class="col-4">
+                  <label for="id">رقم البند</label>
+                  <input type="text" name="id" id="id" class="form-control" />
+                </div>
+                <div class="col-4">
+                  <label for="power">القوات</label>
+                  <select name="power" id="power" class="form-select">
+                    <option value="">اختر...</option>
+                    <option value="بحرية">بحرية</option>
+                    <option value="جوية">جوية</option>
+                    <option value="حربية">حربية</option>
+                  </select>
+                </div>
+                <div class="col-4">
+                  <label for="vehicle">المعده</label>
+                  <select name="vehicle" id="vehicle" class="form-select">
+                    <option value="">اختر...</option>
+                    <option value="ماركبة">ماركبة</option>
+                    <option value="لنش">لنش</option>
+                    <option value="طائرة">طائرة</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row m-3 justify-content-center">
+                <div class="col-4">
+                  <label for="date">التاريخ</label>
+                </div>
+                <div class="col-4">
+                  <label for="date_beg">من</label>
+                  <input
+                    type="date"
+                    name="date_beg"
+                    id="date_beg"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-4">
+                  <label for="date_end">إلي</label>
+                  <input
+                    type="date"
+                    name="date_end"
+                    id="date_end"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="row m-3 justify-content-center">
+                <div class="col-4">
+                  <label for="date">السعة</label>
+                </div>
+                <div class="col-4">
+                  <label for="date_beg">من</label>
+                  <input
+                    type="text"
+                    name="time_beg"
+                    id="time_beg"
+                    class="form-control"
+                  />
+                </div>
+                <div class="col-4">
+                  <label for="time_end">إلي</label>
+                  <input
+                    type="text"
+                    name="time_end"
+                    id="time_end"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3 justify-content-center">
+                <div class="col-2">
+                  <button class="btn btn-outline-dark" type="submit">
+                    بحث
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </center>
       </div>
     </div>
-    <hr />
-    <table class="table table-hover">
-      <thead>
-        <tr class="text-center">
-          <th scope="col">رقم البند</th>
-          <th scope="col">القوات</th>
-          <th scope="col">التاريخ</th>
-          <th scope="col">سعت</th>
-          <th scope="col">ذكر عسكري</th>
-          <th scope="col">اثنى عسكري</th>
-          <th scope="col">ذكر مدني</th>
-          <th scope="col">انثى مدني</th>
-          <th scope="col">نوع المعده</th>
-          <th scope="col">العدد</th>
-          <th scope="col">المنطقة</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for (const record of records) { %>
-        <tr class="text-center">
-          <td scope="row"><%= record.id %></td>
-          <td><%= record.power%></td>
-          <td><%= record.date.toISOString().split('T')[0] %></td>
-          <td><%= record.time %></td>
-          <td><%= record.military_male %></td>
-          <td><%= record.military_female %></td>
-          <td><%= record.civilian_male %></td>
-          <td><%= record.civilian_female %></td>
-          <td><%= record.vehicle_type %></td>
-          <td><%= record.vehicle_qty %></td>
-          <td><%= record.place %></td>
-        </tr>
-        <% } %>
-      </tbody>
-    </table>
+    <center>
+    <% if (specialSearch) { %>
+    <button id="downloadPdf" class="btn btn-outline-info m-2"> تحميل pdf </button>
+      <div class="container border border-2 border-dark shadow shadow-lg">
+      <div class="cnotainer-fluid" style="width: 1188px; height: 780px   ;" id="pdf">
+        <div class="row justify-content-center" style="width: 100%;height: 100px; margin:10px">
+          <div class="col-5 text-end">
+            <p style="font-size: 20px;">هيئـــــة الإستخبـــارات العسكـــــري</p>
+            <p style="font-size: 20px; margin-top: -15px;" >جهـــــــــــــــاز الإستطـــــــــــــــلاع</p>
+      <p style="font-size: 20px; margin-top: -15px; text-decoration: underline; text-underline-offset: 5px;" id="currentDate"></p></div>
+          <div class="col-2"><img src="/images/logo.png" alt="logo" width="100px"></div>
+          <div class="col-5"></div>
+          
+        </div>
+        <div class="row justify-content-center">
+          <center>
+          <div class="col-6" ><h2 style="text-decoration: underline; text-underline-offset: 8px;">تقريــــر المعلومــــات المنطقــــة  ج</h2>
+            <%if (date.date_beg && date.date_end) {%>
+          <h2 style="text-decoration: underline; text-underline-offset: 8px;">في الفترة من <%=date.date_beg%> حتى <%=date.date_end%></h2></div> 
+          <%}%>
+          </center>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-11 m-3 text-end" style="height: 400px;">
+            <h2 style="text-decoration: underline;">المعدات</h2>
+  <% for (const v in vehicle) { %>
+    <h3>-يوجد عدد (<%=vehicle[v]%>) <%=v%></h3>
+  <% } %>
+<br>
+            <h2 style="text-decoration: underline;">الأفراد</h2>
+<%if (PersonResults.military_male){%>
+<h3>-يوجد عدد (<%-PersonResults.military_male%>) ذكر عسكري</h3>
+
+  <%}%>
+<%if (PersonResults.military_female){%>
+<h3>-يوجد عدد (<%-PersonResults.military_female%>) انثى عسكري</h3>
+
+  <%}%>
+<%if (PersonResults.civilian_male){%>
+<h3>-يوجد عدد (<%-PersonResults.civilian_male%>) ذكر مدنى</h3>
+
+  <%}%>
+<%if (PersonResults.civilian_female){%>
+<h3>-يوجد عدد (<%-PersonResults.civilian_female%>) انثى مدنى</h3>
+
+  <%}%>
+
+          </div>
+        </div>
+      </div>
+      </div>
+<% } else { %>
+  <!-- Your else content here -->
+  <div class="container-fluid" style="width: 95%">
+      <table class="table table-hover table-striped border shadow w-100" style="background-color: 	#faf8f6;">
+        <thead style="background-color: rgb(197, 194, 194);">
+          <tr class="text-center">
+            <th scope="col" style="background-color: rgb(131, 131, 131);">م</th>
+            <th scope="col">رقم البند</th>
+            <th scope="col">البند</th>
+            <th scope="col">القوات</th>
+            <th scope="col">التاريخ</th>
+            <th scope="col">سعت</th>
+            <th scope="col">ذكر عسكري</th>
+            <th scope="col">اثنى عسكري</th>
+            <th scope="col">ذكر مدني</th>
+            <th scope="col">انثى مدني</th>
+            <th scope="col">المعده</th>
+            <th scope="col">نوع المعده</th>
+            <th scope="col">العدد</th>
+            <th scope="col">المنطقة</th>
+            <th scope="col">البيان</th>
+          </tr>
+        </thead>
+        <tbody>
+
+<% for (let i = 0; i < records.length; i++) { %>
+  <tr class="text-center">
+    <td scope="row" style="background-color: rgb(197, 194, 194);"><%= i + 1 %></td>
+    <td><%= records[i].id %></td>
+    <td><%= records[i].clause %></td>
+    <td><%= records[i].power %></td>
+    <td><%= records[i].date.toISOString().split('T')[0] %></td>
+    <td><%= records[i].time %></td>
+    <td><%= records[i].military_male %></td>
+    <td><%= records[i].military_female %></td>
+    <td><%= records[i].civilian_male %></td>
+    <td><%= records[i].civilian_female %></td>
+    <td><%= records[i].vehicle %></td>
+    <td><%= records[i].vehicleType %></td>
+    <td><%= records[i].vehicleQty %></td>
+    <td><%= records[i].place %></td>
+    <td><a href="" style="text-decoration: none; color: black;">عرض البيان</a></td>
+  </tr>
+
+
+          <% } %>
+        </tbody>
+      </table>
+      <nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item <%= currentPage == 1 ? 'disabled' : '' %>">
+      <a class="page-link" href="?page=<%= currentPage - 1 %>" tabindex="-1">السابق</a>
+    </li>
+    <% for (let page = 1; page <= totalPages; page++) { %>
+      <li class="page-item <%= currentPage == page ? 'disabled' : '' %>">
+        <a class="page-link" href="?page=<%= page %>"><%= page %></a>
+      </li>
+    <% } %>
+    <li class="page-item <%= currentPage == totalPages ? 'disabled' : '' %>">
+      <a class="page-link" href="?page=<%= +currentPage + 1 %>">التالى</a>
+    </li>
+  </ul>
+</nav>
+<%}%>
+    </center>
+    </div>
   </body>
+  <script src="/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+  var replaceDigits = function() {
+    var map = [
+      "&\#1632;","&\#1633;","&\#1634;","&\#1635;","&\#1636;",
+      "&\#1637;","&\#1638;","&\#1639;","&\#1640;","&\#1641;"
+    ];
+
+    var tables = document.querySelectorAll('table');
+
+    tables.forEach(function(table) {
+      table.innerHTML = table.innerHTML.replace(/\d(?=[^<>]*(<|$))/g, function($0) {
+        return map[$0];
+      });
+    });
+  }
+  window.onload = replaceDigits;
+</script>
   <script src="/js/show_script.js"></script>
+  <script src="/js/html2pdf.bundle.js"></script>
+
 </html>

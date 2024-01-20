@@ -7,62 +7,141 @@
     <link rel="stylesheet" href="/bootstrap-icons-1.10.3/bootstrap-icons.css" />
     <link rel="stylesheet" href="/style/style.css" />
     <title>Document</title>
+          <style>
+    body {
+        font-family: 'Trebuchet MS', sans-serif;/* Use a font that supports Arabic numerals */
+    }
+  </style>
   </head>
   <body>
     <%-include("navbar.ejs")%>
       <body class="bg-light">
 <center>
-    <form action="add" method="POST" class="mt-5 justify-content-center"> 
-        <div class="w-75">
-            <div class="p-4 m-5 card">
-    <h1 class="text-center mb-4">تسجيل بيان</h1>
+      <form action="/add" method="POST">
+        <div class="container border p-5 m-4 shadow" style="background-color: 	#faf8f6;">
+          <div class="display-5 text-center mb-5">تسجيل</div>
+          <div class="row m-3 justify-content-between">
+            <div class="col">
+              <label for="id" class="form-label">رقم البند</label>
+              <input type="text" class="form-control" name="id" id="id"/>
+            </div>
+            <div class="col">
+              <label for="clause" class="form-label"> البند</label>
+              <input type="text" class="form-control" name="clause" id="clause"/>
+            </div>
+            <div class="col">
+              <label for="power" class="form-label"> القوات</label>
+              <select name="power" id="power" class="form-select">
+                <option value="">اختر...</option>
+                <option value="بحرية">بحرية</option>
+                <option value="جوية">جوية</option>
+                <option value="حربية">حربية</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="date" class="form-label"> التاريخ</label>
+              <input type="date" name="date" id="date" class="form-control" />
+            </div>
+            <div class="col">
+              <label for="time" class="form-label"> سعت</label>
+              <input type="text" class="form-control" name="time" id="time"/>
+            </div>
+          </div>
 
-      <div class="form-group form-floating m-3">
-        <label for="id" >رقم البند</label>
-        <input type="text" name="id" id="id" class="form-control" required">
+          <div class="row m-3 align-items-center">
+            <div class="col">
+              <label for="mm" class="form-label"> ذكر عسكري</label>
+              <input type="text" name="mm" id="mm" class="form-control" />
+            </div>
+            <div class="col">
+              <label for="mf" class="form-label"> انثى عسكري</label>
+              <input type="text" name="mf" id="mf" class="form-control" />
+            </div>
+            <div class="col">
+              <label for="cm" class="form-label"> ذكر مدنى</label>
+              <input type="text" name="cm" id="cm" class="form-control" />
+            </div>
+            <div class="col">
+              <label for="cf" class="form-label"> انثى مدنى</label>
+              <input type="text" name="cf" id="cf" class="form-control" />
+            </div>
+            <div class="row m-3">
+              <div class="col">
+                <label for="vehicle" class="form-label"> المعده</label>
+                <select name="vehicle" id="vehicle" class="form-select">
+                  <option value="">اختر...</option>
+                  <option value="ماركبة">ماركبة</option>
+                  <option value="لنش">لنش</option>
+                  <option value="طائرة">طائرة</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="vehicleType" class="form-label"> نوع المعده</label>
+                <input type="text" class="form-control" name="vehicleType" id="vehicleType"/>
+              </div>
+              <div class="col">
+                <label for="vehicleQty" class="form-label"> العدد </label>
+                <input type="text" class="form-control" name="vehicleQty" id="vehicleQty" />
+              </div>
+            </div>
+          <div class="row m-3">
+            <div class="col-3">
+              <label for="place" class="form-label"> المنطقة</label>
+              <input type="text" class="form-control" name="place" id="place"/>
+            </div>
+            <div class="col-9">
+              <label for="subject" class="form-label">البيان</label>
+              <input type="text" class="form-control" name="subject" id="subject"/>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col">
+            <button id="myBtn" class="btn btn-outline-dark" type="button">تسجيل</button>
+            </div>
+          </div>
+        
+      <!-- Trigger/Open The Modal -->
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="container-fluid m-1">
+            <div class="row justify-content-center m-2">
+              <h5>هل انت متأكد انك تريد تسجيل هذه البيانات؟
+</h5></div>
+              <div class="row text-end m-2">
+                <div id="id_check"></div>
+                <div id="clause_check"></div>
+                <div id="power_check"></div>
+                <div id="date_check"></div>
+                <div id="time_check"></div>
+                <div id="mm_check"></div>
+                <div id="mf_check"></div>
+                <div id="cm_check"></div>
+                <div id="cf_check"></div>
+                <div id="vehicle_check"></div>
+                <div id="vheicleType_check"></div>
+                <div id="vheicleQty_check"></div>
+                <div id="place_check"></div>
+                <div id="subject_check"></div>
+                <hr>
+              </div>
+            <div class="row m-2 justify-content-center">
+              <div class="col-2"><button type="submit" class="btn btn-outline-dark">نعم</button></div>
+              <div class="col-2"><button type="submit" class="btn btn-outline-dark" id="no">لا</button>
+          </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group form-floating m-3">
-        <label for="power">القوات</label>
-        <input type="text" name="power" id="power" class="form-control" required>
-      </div>
-      <div class="form-group form-floating m-3">
-        <label for="date">التاريخ</label>
-        <input type="date" name="date" id="date" class="form-control" required>
-      </div>
-      <div class="form-group form-floating m-3">
-        <label for="time">سعت</label>
-        <input type="number" name="time" id="time" min="0" class="form-control" required>
-      </div>
-      <div class="form-group form-floating m-3">
-        <label for="person">اختر الفرد:</label>
-        <select name="person" id="person" class="form-select">
-          <option value="" name="null">اختر...</option>
-          <option value="ذكر عسكري" name="mm">ذكر عسكري</option>
-          <option value="انثي عسكري" name="mf">انثي عسكري</option>
-          <option value="ذكر مدني" name="cm">ذكر مدني</option>
-          <option value="انثي مدني" name="cf">انثي مدني</option>
-        </select>
-      </div>
-      <div class="form-group m-3" id="personField"></div>
-      <div class="form-group form-floating m-3">
-        <label for="vehicle">اختر المعدة:</label>
-        <select name="vehicle" id="vehicle" class="form-select" required>
-          <option value="">اختر...</option>
-          <option value="مركبات" name="markaba">مركبات</option>
-          <option value="طائرات" name="plane">طائرات</option>
-          <option value="لنشات" name="lansh">لنشات</option>
-        </select>
-      </div>
-      <div class="form-group form-floating m-3" id="vehicleField"></div>
-      <div class="form-group form-floating m-3">
-        <label for="place">المكان</label>
-        <input type="text" name="place" id="place" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary justify-content-center" style="width:30%;">سجل</button>
-    </form>
-  </div>
-</div>
-</center>
+      </form>
+
+    </center>
   </body>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
   <script src="/js/script.js"></script>
 </html>
